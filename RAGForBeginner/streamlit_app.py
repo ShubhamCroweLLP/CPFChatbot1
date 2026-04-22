@@ -33,9 +33,7 @@ def build_vectorstore():
     return FAISS.from_documents(chunks, embeddings)
 
 
-db = build_vectorstore()
-
-# --- UI ---
+# --- UI (must come before db init so uploads are saved first) ---
 st.set_page_config(page_title="CPF Chatbot", page_icon="🤖")
 st.title("🤖 CPF Chatbot")
 
@@ -57,15 +55,16 @@ with st.sidebar:
         st.success(f"Uploaded {len(uploaded_files)} file(s)! Click Re-ingest to update the knowledge base.")
 
     if st.button("🔄 Re-ingest Documents"):
-        with st.spinner("Running ingestion pipeline..."):
-            st.cache_resource.clear()
-            st.success("Ingestion complete!")
-            st.rerun()
+        st.cache_resource.clear()
+        st.rerun()
 
     if st.button("🗑️ Clear Chat History"):
         st.session_state.messages = []
         st.session_state.chat_history = []
         st.rerun()
+
+# Build vectorstore AFTER uploads are saved
+db = build_vectorstore()
 
 # Chat state
 if "messages" not in st.session_state:
