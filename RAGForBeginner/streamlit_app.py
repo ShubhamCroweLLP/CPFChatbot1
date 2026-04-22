@@ -41,6 +41,21 @@ st.title("🤖 CPF Chatbot")
 
 with st.sidebar:
     st.header("Settings")
+
+    # --- Upload text files ---
+    uploaded_files = st.file_uploader(
+        "📄 Upload .txt files", type=["txt"], accept_multiple_files=True
+    )
+    if uploaded_files:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        docs_path = os.path.join(script_dir, "docs")
+        os.makedirs(docs_path, exist_ok=True)
+        for f in uploaded_files:
+            file_path = os.path.join(docs_path, f.name)
+            with open(file_path, "wb") as out:
+                out.write(f.getbuffer())
+        st.success(f"Uploaded {len(uploaded_files)} file(s)! Click Re-ingest to update the knowledge base.")
+
     if st.button("🔄 Re-ingest Documents"):
         with st.spinner("Running ingestion pipeline..."):
             st.cache_resource.clear()
