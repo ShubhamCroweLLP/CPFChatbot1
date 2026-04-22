@@ -34,17 +34,13 @@ def build_vectorstore():
 
 
 # --- UI (must come before db init so uploads are saved first) ---
-st.set_page_config(page_title="CPF Chatbot", page_icon="🤖")
-st.title("🤖 CPF Chatbot")
+st.set_page_config(page_title="CPF Assist", page_icon="🤖")
+st.title("🤖 CPF Assist")
 
 with st.sidebar:
     st.header("Settings")
 
-    if st.button("🔄 Re-ingest Documents"):
-        st.cache_resource.clear()
-        st.rerun()
-
-    if st.button("🗑️ Clear Chat History"):
+    if st.button("️ Clear Chat History"):
         st.session_state.messages = []
         st.session_state.chat_history = []
         st.rerun()
