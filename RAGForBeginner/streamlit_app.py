@@ -21,7 +21,7 @@ def build_vectorstore():
         st.error(f"No '{docs_path}' directory found.")
         st.stop()
     loader = DirectoryLoader(
-        path=docs_path, glob="*.txt",
+        path=docs_path, glob="**/*.txt",
         loader_cls=TextLoader, loader_kwargs={"encoding": "utf-8"},
     )
     documents = loader.load()
