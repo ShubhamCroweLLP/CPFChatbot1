@@ -14,7 +14,9 @@ model = ChatOpenAI(model="gpt-4o")
 @st.cache_resource
 def build_vectorstore():
     """Load docs and build FAISS index in memory."""
-    docs_path = "docs"
+    # Handle both local and Streamlit Cloud paths
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    docs_path = os.path.join(script_dir, "docs")
     if not os.path.exists(docs_path):
         st.error(f"No '{docs_path}' directory found.")
         st.stop()
