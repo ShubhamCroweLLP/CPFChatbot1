@@ -1,4 +1,5 @@
 import os
+import uuid
 import streamlit as st
 from langchain_community.document_loaders import TextLoader, DirectoryLoader
 from langchain_text_splitters import CharacterTextSplitter
@@ -14,7 +15,6 @@ model = ChatOpenAI(model="gpt-4o")
 @st.cache_resource
 def build_vectorstore():
     """Load docs and build FAISS index in memory."""
-    # Handle both local and Streamlit Cloud paths
     script_dir = os.path.dirname(os.path.abspath(__file__))
     docs_path = os.path.join(script_dir, "docs")
     if not os.path.exists(docs_path):
@@ -33,40 +33,99 @@ def build_vectorstore():
     return FAISS.from_documents(chunks, embeddings)
 
 
-# --- UI (must come before db init so uploads are saved first) ---
+# --- Helpers for multi-conversation management ---
+def new_conversation():
+    """Create a new conversation and set it as active."""
+    conv_id = str(uuid.uuid4())
+    st.session_state.conversations[conv_id] = {
+        "title": "New Chat",
+        "messages": [],
+        "chat_history": [],
+    }
+    st.session_state.active_conversation = conv_id
+    return conv_id
+
+
+def get_active_conv():
+    """Return the active conversation dict."""
+    return st.session_state.conversations[st.session_state.active_conversation]
+
+
+# --- UI ---
 st.set_page_config(page_title="CPF Assist", page_icon="🤖")
 st.title("🤖 CPF Assist")
 
-with st.sidebar:
-    st.header("Settings")
+# Initialize conversation store
+if "conversations" not in st.session_state:
+    st.session_state.conversations = {}
+if "active_conversation" not in st.session_state:
+    new_conversation()
+# Ensure active conversation still exists
+if st.session_state.active_conversation not in st.session_state.conversations:
+    new_conversation()
 
-    if st.button("️ Clear Chat History"):
-        st.session_state.messages = []
-        st.session_state.chat_history = []
+with st.sidebar:
+    st.header("💬 Chat History")
+
+    # New chat button
+    if st.button("➕ New Chat", use_container_width=True):
+        new_conversation()
         st.rerun()
 
+    st.divider()
+
+    # List all conversations (newest first)
+    for conv_id in reversed(list(st.session_state.conversations.keys())):
+        conv = st.session_state.conversations[conv_id]
+        is_active = conv_id == st.session_state.active_conversation
+        label = conv["title"]
+        # Truncate long titles
+        if len(label) > 30:
+            label = label[:27] + "..."
+
+        col1, col2 = st.columns([5, 1])
+        with col1:
+            if st.button(
+                f"{'▶ ' if is_active else ''}{label}",
+                key=f"conv_{conv_id}",
+                use_container_width=True,
+                type="primary" if is_active else "secondary",
+            ):
+                st.session_state.active_conversation = conv_id
+                st.rerun()
+        with col2:
+            if st.button("🗑️", key=f"del_{conv_id}"):
+                del st.session_state.conversations[conv_id]
+                if st.session_state.active_conversation == conv_id:
+                    if st.session_state.conversations:
+                        st.session_state.active_conversation = list(
+                            st.session_state.conversations.keys()
+                        )[-1]
+                    else:
+                        new_conversation()
+                st.rerun()
+
 db = build_vectorstore()
+conv = get_active_conv()
 
-# Chat state
-if "messages" not in st.session_state:
-    st.session_state.messages = []
-if "chat_history" not in st.session_state:
-    st.session_state.chat_history = []
-
-# Display chat history
-for msg in st.session_state.messages:
+# Display chat history for the active conversation
+for msg in conv["messages"]:
     with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
 # Chat input
 if prompt := st.chat_input("Ask a question about your documents..."):
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    conv["messages"].append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
+    # Auto-title: use the first user message as the conversation title
+    if conv["title"] == "New Chat":
+        conv["title"] = prompt[:50] if len(prompt) <= 50 else prompt[:47] + "..."
+
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            chat_history = st.session_state.chat_history
+            chat_history = conv["chat_history"]
 
             # Rewrite question if there's history
             if chat_history:
@@ -102,6 +161,7 @@ Please provide a clear, helpful answer using only the information from these doc
             st.markdown(answer)
 
             # Update history
-            st.session_state.messages.append({"role": "assistant", "content": answer})
-            st.session_state.chat_history.append(HumanMessage(content=prompt))
-            st.session_state.chat_history.append(AIMessage(content=answer))
+            conv["messages"].append({"role": "assistant", "content": answer})
+            conv["chat_history"].append(HumanMessage(content=prompt))
+            conv["chat_history"].append(AIMessage(content=answer))
+            st.rerun()
