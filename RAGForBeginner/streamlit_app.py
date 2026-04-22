@@ -1,23 +1,37 @@
 import os
 import streamlit as st
-from langchain_chroma import Chroma
+from langchain_community.document_loaders import TextLoader, DirectoryLoader
+from langchain_text_splitters import CharacterTextSplitter
+from langchain_community.vectorstores import FAISS
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from ingestion_pipeline import main as run_ingestion
 
 # --- Init ---
-persistent_directory = "db/chroma_db"
 embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 model = ChatOpenAI(model="gpt-4o")
 
 
 @st.cache_resource
-def get_db():
-    run_ingestion()
-    return Chroma(persist_directory=persistent_directory, embedding_function=embeddings)
+def build_vectorstore():
+    """Load docs and build FAISS index in memory."""
+    docs_path = "docs"
+    if not os.path.exists(docs_path):
+        st.error(f"No '{docs_path}' directory found.")
+        st.stop()
+    loader = DirectoryLoader(
+        path=docs_path, glob="*.txt",
+        loader_cls=TextLoader, loader_kwargs={"encoding": "utf-8"},
+    )
+    documents = loader.load()
+    if not documents:
+        st.error("No .txt files found in docs/")
+        st.stop()
+    splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+    chunks = splitter.split_documents(documents)
+    return FAISS.from_documents(chunks, embeddings)
 
 
-db = get_db()
+db = build_vectorstore()
 
 # --- UI ---
 st.set_page_config(page_title="CPF Chatbot", page_icon="🤖")
@@ -27,7 +41,6 @@ with st.sidebar:
     st.header("Settings")
     if st.button("🔄 Re-ingest Documents"):
         with st.spinner("Running ingestion pipeline..."):
-            run_ingestion()
             st.cache_resource.clear()
             st.success("Ingestion complete!")
             st.rerun()
