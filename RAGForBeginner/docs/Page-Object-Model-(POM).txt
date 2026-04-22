@@ -1,0 +1,34 @@
+#Introduction
+Page object model help us to structure the test suite to optimize ease of authoring and maintenance.
+**CPF also uses the [Page Object Model (POM)](https://playwright.dev/docs/pom).** 
+
+Follow the below steps to implement the POM structure and same has been implemented in CPF.
+- For one page, one .ts file is created under the pages folder. Each page file has the below components.
+
+- **Locators:**
+- [ ] Private
+- [ ] Proper naming convention in camelCase
+
+   ![image.png](/.attachments/image-0d9c5401-3ba8-4bf4-a331-877be2c9e3c4.png)
+
+- **Step Methods:**
+- [ ] Each step is wrapped in a method
+- [ ] Private 
+- [ ] Proper naming convention in camelCase
+- [ ] Using BoxedStep
+
+   ![image.png](/.attachments/image-c1e31443-171b-41e4-859d-307c66207344.png)
+
+-  **Public Methods which need to be called outside class**
+- [ ] Should use test.step
+- [ ] Should have a proper comment
+
+   ![image.png](/.attachments/image-d0d8b3d5-754d-4325-9619-611bfdb69d30.png)
+ 
+- A [Custom fixture](/CPF-Overview/Custom-Fixtures) is created for each page. 
+
+  ![image.png](/.attachments/image-643dc36c-cea8-4ef2-97ec-6e9f5458b345.png)
+
+- Page methods can be called in the test file. 
+
+  ![image.png](/.attachments/image-10f0868c-0b23-438c-9692-6379ada19074.png)

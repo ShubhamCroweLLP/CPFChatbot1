@@ -1,0 +1,14 @@
+#Introduction
+This feature allows for the breakdown of individual actions within a test and grouping of relevant steps together, creating a more detailed and comprehensive understanding of the test.
+
+Below are the screenshot reference for implementation
+
+![image.png](/.attachments/image-6977e02b-0e70-496e-8e56-08966d1be3c9.png)
+
+![image.png](/.attachments/image-40da0ed9-5d5f-49de-ad50-efd0cbe28e2c.png)
+
+One of the key benefits of test.step is that it updates the test steps section of the report to give a much clearer roadmap of what the test is covering and what steps it failed on. This can be especially helpful in identifying the root cause of a failure and can save time and effort in the debugging process.
+
+![image.png](/.attachments/image-14559987-d6c9-4642-939b-ff553e8dce04.png)
+
+For more detail refer [Test.Step - Providing Clear Stages to Your Tests](https://www.workwithloop.com/blog/a-guide-to-human-readable-reports-in-playwright-with-test-step-expect-annotations)

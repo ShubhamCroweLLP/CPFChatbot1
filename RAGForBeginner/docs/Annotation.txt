@@ -1,0 +1,8 @@
+#Introduction
+​​​​​​​[Annotations](https://playwright.dev/docs/test-annotations) can be added to a single test or a group of tests. The playwright supports both build-in & custom. 
+
+Below is the screenshot reference for implementation.
+
+![annotation.png](/.attachments/image-8c93f3d1-13bb-4fb0-b0df-88471f862b87.png)
+
+![annotationReport.png](/.attachments/image-4fe12a5c-c895-4371-a495-b287ce8c99b1.png)

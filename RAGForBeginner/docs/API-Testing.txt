@@ -1,0 +1,62 @@
+#Introduction
+Playwright can be used to get access to the REST API of your application. [Playwright API Testing Guide](https://playwright.dev/docs/api-testing). 
+
+**Note**: In CPF we have used the Booking functionality/Module for API Testing. 
+
+# Steps to Execute API Test using CPF
+
+
+**1. Define the Base URL as an environment variable**
+
+   ![image.png](/.attachments/image-2e33b523-1af5-4edb-b84b-e77a7cbbb01b.png)
+
+   ![image.png](/.attachments/image-20ba592f-ccd9-4b8a-92a8-2301bf4cd79f.png)
+
+**2. Define one page for all APIs of a module.**
+
+-   Reusable assertion methods specific to the module should be mentioned here.
+-   Methods which need to be called from the test file should be public
+-   These methods should use test.step with the human-readable message (with parameter if possible) wherever required
+-   The methods of API pages will use Utils->ApiAssertions. ApiAssertions class contains the most generic assertions like verifyResponseStatusCode, verifyResponseHeader,verifyResponseTime, verifyResponsePropertyValue,validateResponseSchema
+
+   
+  ![image.png](/.attachments/image-2251cbf8-b028-4b3b-976e-65235aa8ddf1.png)
+
+**3. Create a fixture for the API page.**
+
+   ![image.png](/.attachments/image-8f0fc0bd-5cbe-4a21-999d-4556db501801.png)
+    
+
+**4. Define the test data.**
+
+- This data can have a body, headers etc.
+- For one module we can use one JSON file. For example in the below file, we have data for createBooking, updateBooking & deleteBooking
+
+![image.png](/.attachments/image-dfe42829-9566-4499-a1ca-22b9ede295e1.png)
+
+Expected Schema:
+
+- All the expected schema should be under the TestData -> Schemas folder.
+- These Expected schemas should be created using the createResponseSchemaAndSaveInJsonFile method under the apiHelper class. 
+
+![image.png](/.attachments/image-4c2a0cc5-8410-4736-b11d-fe8fd19d8318.png)
+
+**5. Create the API Test.**
+
+-  All the features (annotation, tags, fixtures etc) supported by UI Test are also supported by API Test.
+-  One API test should cover End to End scenario. It might cover multiple APIs. One API might have a dependency on another API. Example: In the below test we are creating, getting, updating and deleting the booking.
+-  One API might be used in multiple tests.
+- To make the HTML report human-readable we need to use test.step effectively.
+-  Currently, Playwright doesn't provide out of a box method to calculate API response time. As a workaround, we can calculate it using the below approach.
+
+![image.png](/.attachments/image-15c914ec-4af5-468a-a7e7-f1fe6d6b676d.png)
+
+**5. Execute the API Test.**
+- API Test can be executed using the below command
+`npx playwright test api.spec.ts` 
+
+**5. HTML Report.**
+
+![image.png](/.attachments/image-6c7fab20-6ca0-404f-90d3-4bd3fa2ae380.png)
+
+![image.png](/.attachments/image-10c9be6c-71e4-4f19-9393-501179797369.png)

@@ -1,0 +1,7 @@
+The Crowe Playwright Framework (CPF) provides teams with a streamlined approach to UI test automation. It comes equipped with built-in support for a range of tools, enhancing its overall functionality and user experience. 
+
+CPF enable us to use [Playwright](https://playwright.dev/) for E2E automation effectively & quickly. CPF doesn’t overwrite the Playwright's methods.
+
+Below are some capabilities which are ready to use in CPF.
+
+[[_TOSP_]]

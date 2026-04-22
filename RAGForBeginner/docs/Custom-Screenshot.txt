@@ -1,0 +1,9 @@
+#Introduction
+The playwright takes screenshots and attaches them to the Test based on the screenshot configuration given in the config file.  
+
+But if we need to take a screenshot (custom) at some specific step & [attach it to the current Test](https://playwright.dev/docs/api/class-testinfo#test-info-attach) that can be done via the below code:
+
+
+![customScreenshot.png](/.attachments/image-5c4e33d9-fa09-4ecb-a430-07686367c207.png)
+
+![report.png](/.attachments/image-40cd22a6-6865-4a38-9c3f-6aaad4ea379a.png)

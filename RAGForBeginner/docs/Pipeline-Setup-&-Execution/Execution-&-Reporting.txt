@@ -1,0 +1,12 @@
+# Introduction
+
+A User can select the options based on their needs & trigger the pipeline. 
+
+![image.png](/.attachments/image-60e1c2e2-0f20-48fd-bf45-382e16647552.png)
+
+**Note: Test Category is not applicable for SauceLabs** 
+# Execution Summary Email
+
+Below is the screenshot of the execution summary report email that will be sent to recipients after the completion of pipeline execution.
+
+![image.png](/.attachments/image-921005e9-9e96-4958-b995-de646a23c18e.png)

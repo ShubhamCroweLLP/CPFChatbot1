@@ -1,0 +1,9 @@
+#Introduction
+Console Log helps the user to write the message on console for testing purposes.
+In playwright console log messages also gets attached in the standard output section of the report for easier reading of the custom user messages defined in the tests.
+
+Below is the screenshot reference of console.log statement getting attached to the report for easier reading of the user messages of the test.
+
+
+
+![image.png](/.attachments/image-dfa23ad8-84e5-4d0d-992d-099686a6dc18.png)

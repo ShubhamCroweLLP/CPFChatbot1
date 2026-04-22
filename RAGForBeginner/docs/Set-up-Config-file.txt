@@ -1,0 +1,24 @@
+#Introduction
+ CPF provides many options to configure how your tests are collected and executed. It also supports running multiple test projects at the same time. Many more configurations are defined in the [configuration file](https://playwright.dev/docs/api/class-testconfig).
+### Important configurations that are already defined in CPF are:
+- **Test Dir:** Directory path where all the tests are defined.
+- **Timeout:** This is the base timeout for each test in milliseconds. Default timeout is 
+           30ms.
+- **Retries:** The maximum number of retry attempts given to failed tests
+- **Fully Parallel:** Concurrently execute all tests in all files.
+- **Workers:** The maximum number of concurrent worker processes to use for parallelizing tests
+- **Reporter:** Enable to generate test reports in different formats like HTML, XML, List, JSON etc.
+- **Expect timeout:** Timeout for assertion library.
+- **Use:** Enable to set multiple global test options for tests. In CPF we have configured some basic configurations as a part of the test.
+  - **Headless:** Run tests in headless mode
+  - **Video:** Take a video recording of the test and attach it to the HTML report.
+  - **Screenshot:** Take a screenshot of the test step and attach it to the HTML report.
+  - **Trace:** Record trace for each test and attach to HTML report for debugging.
+  - **Action timeout:** Timeout for playwright actions.
+  - **Viewport:** Define the screen width and height of the browser on execution.
+
+- **Projects:** Configure multiple browsers for test execution with browser-specific configurations.
+
+Below is the screenshot reference of the CPF config file:
+
+![image.png](/.attachments/image-0db64131-d96a-4d29-968c-6bb193691a98.png) 

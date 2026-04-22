@@ -1,0 +1,18 @@
+
+# Introduction
+Secure files give you a way to store files that you can share across pipelines. The contents of the secure files are encrypted and can only be used when you consume them from a task. Secure files are a protected resource. You can add approvals and checks to them and set pipeline permissions
+
+# Add Secure file & Provide Permission to Pipeline
+Upload the environment files in the library section using the secure file option and provide pipeline permission to every secure file uploaded.
+
+![image.png](/.attachments/image-9eb55a14-b37d-461c-84f6-8ad9c6553080.png)
+
+Provide permission to the pipeline on the targeted secure files. 
+
+![image.png](/.attachments/image-e06107c0-b03e-4c85-a069-cebc6c8d9543.png)
+
+
+# Consume a secure file in Azure Pipeline
+Use the Download Secure File utility task to consume secure files in a pipeline. This task will download the secured environment file into the build directory and will be utilized for test execution.
+
+![image.png](/.attachments/image-3586bce6-c111-4351-b0d6-90466a582f62.png)

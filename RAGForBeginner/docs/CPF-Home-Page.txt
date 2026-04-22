@@ -1,0 +1,129 @@
+<!-- ===================
+
+Tips on editing in the wiki
+
+========================
+ 
+* Use Markdown for content, HTML for structure
+* Whitespace in the code can translate to a line break in the site
+* Be VERY careful when deleting '>' or '<'
+* Vertical spacing is your friend
+* Copy + paste to a code editor, if you have one
+* Look for further instruction in comments down the page
+* Important colors:
+    - Indigo: #002D62
+    - Amber: #FDB913
+    - Light Blue: #55C5E9
+
+=================== -->
+
+
+<table style="background: #002d62;"><tr><td style="width: 65%; border: none; vertical-align: text-top; padding: 10px 20px">
+
+<!--------
+EDIT IMAGE
+--------->
+![crowe-logo-yellow-150.png](/.attachments/image-4b797dc1-085f-4fb1-acae-dbbae21d72dd.png))
+
+<h1 style="font-family: helvetica, arial, sans-serif; font-weight: 700; color: #4c4c4c; color: #fff; font-size: 30px;">Crowe Playwright Framework</h1><p></p>
+</td><td style="width: 15%; border: none; padding: none ;">
+
+<!--------
+EDIT IMAGE
+--------->
+![erpfg-life-of-a-scenario-cover.png](/.attachments/image-49b48165-92b8-4933-ad7c-93bd88486d61.png))
+
+</td></tr></table>
+
+<div class="col" style="padding: 15px; width: calc(50% - 7.5px); float: left; border: 1px solid #ddd;"><h3 style="padding: 0; margin: 0; border-bottom: 1px solid #ddd; font-family: Helvetica, Arial, Segoe, sans-serif; font-weight: bold; margin: -15px; padding: 15px 8px; margin-bottom: 8px; background: #002d62; display: block;"><a  style="color: #fff">1. What sets CPF apart?</a></h3>
+
+
+The Crowe Playwright Framework (CPF) provides teams with a streamlined approach to UI test automation. It comes equipped with built-in support for a range of tools, enhancing its overall functionality and user experience.  For more detail refer to [Playwright: Simplifying UI Automation](https://crowe.sharepoint.com/sites/msteams_8c5c05/SitePages/Why-Playwright-is-a-good-option-for-UI-Automation-.aspx?xsdata=MDV8MDJ8fGM2NjJhYWQzMWVhNTQ5MTliY2NkMDhkYzc0ZDY1Mzg3fDZmZjYwZDM2OTI1ZjQ3ODVhODU0NTEwZjkwOWVlNTYxfDB8MHw2Mzg1MTM3MTEwNTI5OTU3ODl8VW5rbm93bnxWR1ZoYlhOVFpXTjFjbWwwZVZObGNuWnBZMlY4ZXlKV0lqb2lNQzR3TGpBd01EQWlMQ0pRSWpvaVYybHVNeklpTENKQlRpSTZJazkwYUdWeUlpd2lWMVFpT2pFeGZRPT18MXxMMk5vWVhSekx6RTVPbTFsWlhScGJtZGZUVEpGTVUxRWEzcFBSMDEwVG0xTk1rOVRNREJOZW1ONlRGUnNhRTR5VVhSTmJWSnBXWHBrYkZwdFJUQk5SMUY0UUhSb2NtVmhaQzUyTWk5dFpYTnpZV2RsY3k4eE56RTFOemMwTXpBME5ETTV8MWZmMDA4YjZmMGYxNGU5NmJjY2QwOGRjNzRkNjUzODd8M2IyMGVjZGMzZmViNDM2Nzk3M2UxNjllZjQ1YzY5NzE%3D&sdata=aHQvRDdqcGM0Nit0WkRsYUVKL21XMHlNeEI1aGZwWXRDTzh0TFZ4SG02WT0%3D&ovuser=6ff60d36-925f-4785-a854-510f909ee561%2CAnkur.Kumar%40crowe.com&OR=Teams-HL&CT=1716293088857&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNDA0MTEyMjMxNSJ9)
+
+</div>
+
+<div class="col" style="padding: 15px; width: calc(50% - 7.5px); float: left; border: 1px solid #ddd;"><h3 style="padding: 0; margin: 0; border-bottom: 1px solid #ddd; font-family: Helvetica, Arial, Segoe, sans-serif; font-weight: bold; margin: -15px; padding: 15px 8px; margin-bottom: 8px; background: #002d62; display: block;"><a  style="color: #fff">2. CPF Key Components</a></h3>
+
+
+**Base Framework**: It will help you to start End to End UI automation quickly & easily. For more detail refer to [CPF Setup](/CPF-Setup).
+
+**CPF Utilities Packages**:  Utilities are used via NPM package in Base Framework. There will be more releases of these Packages. You can easily upgrade the Package by referring the [CPF Utilities Packages](/CPF-Utilities).
+
+</div>
+
+<div class="col" style="padding: 15px; width: calc(50% - 7.5px); float: left; border: 1px solid #ddd;"><h3 style="padding: 0; margin: 0; border-bottom: 1px solid #ddd; font-family: Helvetica, Arial, Segoe, sans-serif; font-weight: bold; margin: -15px; padding: 15px 8px; margin-bottom: 8px; background: #002d62; display: block;"><a href="https://dev.azure.com/crowevs/AutomatedTestingFramework/_wiki/wikis/Crowe%20Playwright%20Framework%20(CPF)/10826/CPF-Setup" style="color: #fff">3. CPF SetUp</a></h3>
+
+- **Setup**
+  - [System Requirements](/CPF-Setup/System-Requirements)
+  - [Installation](/CPF-Setup/Installation)
+  - [End to End Test Execution](/CPF-Setup/End%2Dto%2DEnd-Test-Execution-using-CPF)
+</div>
+<div class="col" style="padding: 15px; width: calc(50% - 7.5px); float: left; border: 1px solid #ddd;"><h3 style="padding: 0; margin: 0; border-bottom: 1px solid #ddd; font-family: Helvetica, Arial, Segoe, sans-serif; font-weight: bold; margin: -15px; padding: 15px 8px; margin-bottom: 8px; background: #002d62; display: block;"><a href="https://dev.azure.com/crowevs/AutomatedTestingFramework/_wiki/wikis/Crowe%20Playwright%20Framework%20(CPF)/10808/CPF-Overview" style="color: #fff">4. CPF Overview</a></h3>
+
+- **Overview**
+  - [Setup Config file](/CPF-Overview/Set-up-Config-file)
+  - [Page Object Model](/CPF-Overview/Page-Object-Model-\(POM\))
+  - [Custom Fixtures](/CPF-Overview/Custom-Fixtures)
+  - [Use of Test Data](/CPF-Overview/Use-of-Test-Data)
+  - [Use of Tags](/CPF-Overview/Use-of-Tags)
+  - [Setup multiple test environments](/CPF-Overview/Set-up-for-multiple-Test-Environments)
+  - [Sample Reusable Methods](/CPF-Overview/Sample-Reusable-Methods-file)
+  - [API Testing](/CPF-Overview/API-Testing)
+  - [ES Lint Prettier and Husky](/CPF-Overview/ES-Lint-Prettier-and-Husky)
+
+
+</div>
+<div class="col" style="padding: 15px; width: calc(50% - 7.5px); float: left; border: 1px solid #ddd;"><h3 style="padding: 0; margin: 0; border-bottom: 1px solid #ddd; font-family: Helvetica, Arial, Segoe, sans-serif; font-weight: bold; margin: -15px; padding: 15px 8px; margin-bottom: 8px; background: #002d62; display: block;"><a href="https://crowevs.visualstudio.com/AutomatedTestingFramework/_wiki/wikis/Crowe%20Playwright%20Framework%20(CPF)/10813/Reporting" style="color: #fff">5. Reporting</a></h3>
+
+- **Human Readable Reports**
+  - [Console Log](/Reporting/Console-Log)
+  - [Test Step](/Reporting/Test-Step)
+  - [Boxed Step](/Reporting/BoxedSteps)
+  - [Annotation](/Reporting/Annotation)
+  - [Custom expect message](/Reporting/Custom-expect-message)
+  - [Custom screenshot](/Reporting/Custom-Screenshot)
+</div>
+<div class="col" style="padding: 15px; width: calc(50% - 7.5px); float: left; border: 1px solid #ddd;"><h3 style="padding: 0; margin: 0; border-bottom: 1px solid #ddd; font-family: Helvetica, Arial, Segoe, sans-serif; font-weight: bold; margin: -15px; padding: 15px 8px; margin-bottom: 8px; background: #002d62; display: block;"><a href="https://crowevs.visualstudio.com/AutomatedTestingFramework/_wiki/wikis/Crowe%20Playwright%20Framework%20(CPF)/10809/Continuous-Integration" style="color: #fff">6. Continuous Integration</a></h3>
+
+- **CI/CD Integration**
+  - [Azure DevOps Pipeline](/Continuous-Integration/ADO-Pipeline)
+  - [Sauce Labs Pipeline](/Continuous-Integration/Sauce-Labs-Pipeline)
+ 
+
+</div>
+<div class="col" style="padding: 15px; width: calc(50% - 7.5px); float: left; border: 28px solid #fff;"><h3></h3>
+</div>
+
+<div class="col" style="padding: 15px; width: calc(50% - 7.5px); float: left; border: 1px solid #ddd;"><h3 style="padding: 0; margin: 0; border-bottom: 1px solid #ddd; font-family: Helvetica, Arial, Segoe, sans-serif; font-weight: bold; margin: -15px; padding: 15px 8px; margin-bottom: 8px; background: #002d62; display: block;"><a href="https://crowevs.visualstudio.com/AutomatedTestingFramework/_wiki/wikis/Crowe%20Playwright%20Framework%20(CPF)/10833/Miscellaneous" style="color: #fff">7. Miscellaneous</a></h3>
+
+  - [Best Practices](/Miscellaneous/Best-Practices)
+  - [Release notes](/Miscellaneous/Release-Notes)
+- [Glossary of Terms](/Miscellaneous/Glossary-of-Terms)
+- [Playwright C Sharp vs TS Comparison](/Miscellaneous/Playwright-C-Sharp-vs-TS-Comparison)
+- [DB Integration With CPF](/Miscellaneous/DB-Integration-With-CPF)
+- [Okta Login With CPF](/Miscellaneous/Okta-Login-With-CPF)
+- [Link Test cases to Azure DevOps](/Miscellaneous/Link-Testcases-to-Azure-DevOps)
+
+
+
+</div>
+
+<div class="col" style="padding: 15px; width: calc(50% - 7.5px); float: left; border: 1px solid #ddd;"><h3 style="padding: 0; margin: 0; border-bottom: 1px solid #ddd; font-family: Helvetica, Arial, Segoe, sans-serif; font-weight: bold; margin: -15px; padding: 15px 8px; margin-bottom: 8px; background: #002d62; display: block;"><a href="https://crowevs.visualstudio.com/AutomatedTestingFramework/_wiki/wikis/Crowe%20Playwright%20Framework%20(CPF)/10830/CPF-Utilities" style="color: #fff">8. CPF Utilities</a></h3>
+
+  - [Azure Service Bus utility](/CPF-Utilities/Azure-Service-Bus-Utility)
+  - [PDF Reading Utility](/CPF-Utilities/PDF-Read-Utility)
+- [Excel Utility](/CPF-Utilities/Excel-Utility)
+- [Accessibility Report Generation](/CPF-Utilities/Accessibility-Report-Generation-Utility)
+- [Word Utility](/CPF-Utilities/Word-Utility)
+  
+</div>
+
+
+<div class="col" style="padding: 15px; width: calc(50% - 7.5px); float: left; border: 1px solid #ddd;"><h3 style="padding: 0; margin: 0; border-bottom: 1px solid #ddd; font-family: Helvetica, Arial, Segoe, sans-serif; font-weight: bold; margin: -15px; padding: 15px 8px; margin-bottom: 8px; background: #002d62; display: block;"><a href="https://crowevs.visualstudio.com/AutomatedTestingFramework/_wiki/wikis/Crowe%20Playwright%20Framework%20(CPF)/13409/Playwright-MCP" style="color: #fff">9. Playwright MCP</a></h3>
+
+  - [Installation](https://crowevs.visualstudio.com/AutomatedTestingFramework/_wiki/wikis/Crowe%20Playwright%20Framework%20(CPF)/13410/Playwright-MCP-Server-Installation)
+  - [Prompts for Playwright MCP](https://crowevs.visualstudio.com/AutomatedTestingFramework/_wiki/wikis/Crowe%20Playwright%20Framework%20(CPF)/13411/Playwright-MCP-UseCases-with-Prompts)
+
+- [Playwright Test Agents](https://crowevs.visualstudio.com/AutomatedTestingFramework/_wiki/wikis/Crowe%20Playwright%20Framework%20(CPF)/14559/Playwright-Test-Agents)
+  
+</div>

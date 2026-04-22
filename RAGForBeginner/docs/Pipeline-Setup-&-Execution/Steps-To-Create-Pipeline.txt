@@ -1,0 +1,32 @@
+#Introduction
+Azure Pipelines helps to automatically builds and tests code projects. It supports continuous integration (CI) and continuous delivery (CD) to continuously test, build, and deploy your code.
+
+#Steps to Create a New Pipeline
+
+1. Go to Pipelines section and click on New Pipeline.
+
+![image.png](/.attachments/image-9021fdaa-bbd0-4253-851b-9438dac9ecac.png)
+
+2. Select the type of version control where the project repository is created. 
+
+![image.png](/.attachments/image-3fdb4662-c67d-4ee2-88bc-5dc2d369c9d9.png)
+
+3. Select the project repository.
+
+![image.png](/.attachments/image-d6fb4beb-c47c-498b-9b40-fd75bbb7fcd9.png)
+
+4. Configure the pipeline using the existing yaml file
+
+![image.png](/.attachments/image-86eabab3-7991-4bdd-9e68-23dd10dc85a7.png)
+
+5. Select the path of the existing azure pipeline yaml file from your project repository.
+
+![image.png](/.attachments/image-f309875c-c238-42db-abe5-ce099b90bf77.png)
+
+    Note: For the SauceLabs pipeline select 'azure-pipelines-sauce.yml'
+
+
+6. Review your pipeline YAML and update the yaml task according to the [ADOPipeline](https://dev.azure.com/crowevs/AutomatedTestingFramework/_wiki/wikis/Crowe%20Playwright%20Framework%20(CPF)/10810/ADO-Pipeline) documentation and click on Save.
+
+![image.png](/.attachments/image-17928956-4fe0-4401-81db-d3dfdfbb03d4.png)
+

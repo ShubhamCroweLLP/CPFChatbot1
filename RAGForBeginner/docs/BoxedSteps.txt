@@ -1,0 +1,20 @@
+#Introduction
+[Boxed steps](https://dev.to/playwright/box-test-steps-in-playwright-15d9) allows us to hide the implementation details of our helper functions and instead show the test code where the helper function is being used. This makes it much easier to debug our tests when they fail either through error messages in the terminal or in the reporters (e.g. HTML).
+
+Below is the screenshot reference for implementation.
+
+![boxedStep.png](/.attachments/image-2059b678-a021-4b36-bcfb-1a890f2eea77.png)
+
+![htmlReport.png](/.attachments/image-7716d8f5-71f5-43c5-bef8-08e05b952d9e.png)
+
+**Difference b/w boxedStep & boxedStepFalse**
+
+In the boxedStep, the box option is set to true so that errors inside the step are not shown and we therefore hide the implementation details for this step. 
+
+Instead of showing us the helper function code it is showing us the test code of where that helper function is being used meaning we can easily see what was happening before the helper function so we can much easier debug our tests.
+
+![image.png](/.attachments/image-a657876e-045e-42a9-b84b-7769792ed943.png)
+
+In the boxedStepFalse, the box option is set to false so that the error inside the step is shown.
+
+![image.png](/.attachments/image-a36c8f9b-0d29-48ae-868e-d2981b0e7fb5.png)

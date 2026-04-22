@@ -1,0 +1,18 @@
+# Introduction
+
+Variable groups store values and secrets that you might want to be passed into a YAML pipeline
+or make available across multiple pipelines. You can share and use variable groups in multiple pipelines in the same project.
+
+![image.png](/.attachments/image-c929c5be-67fb-4951-8e90-846fe63bc7f4.png)
+
+|Name| Value |Comment|
+|--|--|--|
+|buildURL  | https://dev.azure.com/crowevs/AutomatedTestingFramework |Update as per your Project
+| emailRecipient | dummy@crowe.com |Update as per your Project
+| fromAddress | ADO_DoNotReply@em.dev.crowe.com | Update if required
+|sendGridApiKey  | <YOUR_SENDGRID_API_KEY> |Update if required|
+| subjectPrefix | ProjectName |Update as per your Project
+|sauceAccessKey|90a73a51-338c-4f81-bb32-8d03d3c5263d|Update as per your Project
+|sauceUsername|svcatatfd|Update as per your Project
+
+Note: sauceAccessKey & sauceUsername are specific to SauceLabs pipeline.

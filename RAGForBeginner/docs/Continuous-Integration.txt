@@ -1,0 +1,2 @@
+CPF currently supports Azure Pipeline for test execution and also supports SauceLabs for executing tests on saucelabs cloud using saucectl. 
+[[_TOSP_]]

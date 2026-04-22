@@ -1,0 +1,12 @@
+#Introduction
+Storing the test data in json helps to improve the maintainability of the framework.
+
+Below is the implementation of reading test data in tests.
+
+- ​​​​​​​Test data can be stored in JSON format inside the **testData** folder.
+
+  ![image.png](/.attachments/image-e03030e4-7b33-4b8e-8b37-8319f4acb0e4.png)
+
+- Test data can be fetched as mentioned in the below screenshot.
+
+  ![image.png](/.attachments/image-261402da-bc79-4df4-8914-ce49f4352fac.png)

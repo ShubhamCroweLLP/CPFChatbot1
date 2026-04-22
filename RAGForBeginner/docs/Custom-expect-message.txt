@@ -1,0 +1,14 @@
+#Introduction
+[Custom expect message](https://playwright.dev/docs/test-assertions#custom-expect-message) will be shown in reporters, both for passing and failing expects, providing more context about the assertion.
+
+Below is the screenshot reference for implementation.
+
+![expectMessage.png](/.attachments/image-725b718a-ef13-426f-95eb-e9a2e4d10549.png)
+
+Below is how it gets displayed in case of failure.
+
+![report_Fail.png](/.attachments/image-2cf767cc-8015-4913-af9f-97f53836cbe7.png)
+
+Below is how it gets displayed in case of Pass.
+
+![image_Pass.png](/.attachments/image-07a73bea-1eb1-4bcf-af3c-54a350ccc30f.png)

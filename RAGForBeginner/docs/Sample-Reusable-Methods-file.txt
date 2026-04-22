@@ -1,0 +1,8 @@
+#Introduction
+We are providing the user this file to utilize the already created common methods within the framework. User can use this file to enhance the reusable methods as per their project needs.
+
+​​​​​​​In CPF, we are not putting a wrapper on Playwright methods. But we have given a sample reusable methods file. You can maintain it as per your need. The CPF team will not provide support for this file. 
+
+However, The CPF Team will provide regular updates on [CPF Utilities Package](/CPF-Utilities-Package). 
+
+![image.png](/.attachments/image-47897946-b24f-4177-977f-2853b1085b1a.png)

@@ -1,0 +1,19 @@
+#Introduction
+To execute same automation tests for different environments like qa,uat and prod, we need to enable the framework to support multiple test environment. 
+
+To enable the framework follow the below steps for implementation.
+- Update files under the env folder as per your need. 
+
+  ![.env file](/.attachments/image-75147394-4109-4e66-8b36-0804c336e195.png)
+
+- Update the env.ts file under the utils folder so that it is in sync with the .env files.
+
+  ![env.ts file](/.attachments/image-67820b11-907b-4fb6-abf9-81e985a0ed72.png)
+
+- Use the environment variable.
+
+  ![image.png](/.attachments/image-45675f65-6eba-4bff-b3b4-b41f34afcfae.png)
+
+-----------
+
+Note: [DotEnv npm package](https://www.npmjs.com/package/dotenv) is used for Environment Support. For details, please refer to [Executing automation scripts in multiple environments using dotenv package](https://sadaniruchee.medium.com/playwright-executing-automation-scripts-in-multiple-environments-using-dotenv-package-800d643c6c73)

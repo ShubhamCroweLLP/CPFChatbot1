@@ -1,0 +1,21 @@
+# Introduction
+
+Runtime parameters let you have more control over what values can be passed to a pipeline. With runtime parameters, you can:
+- Supply different values to scripts and tasks at runtime
+- Control parameter types, allowed ranges, and defaults
+
+
+## Update Environment Values 
+
+Define the type of environment (For example: QA, UAT, PROD etc.). Parameter values should be the same as declared in the environment filename(Example: .env.qa where qa is the environment value) because these parameters are utilized in reading the environment file.
+
+![image.png](/.attachments/image-f799f35b-6ad2-445b-afa8-8ac1e846962e.png)
+
+
+## Update Test Category 
+
+Define the test category to filter out the tests for execution and the parameter value should be the same as defined in the tags of the tests.
+
+**Note: Tags are not supported by Saucelabs.**
+
+![image.png](/.attachments/image-08155cad-2e0c-4289-a90a-92e7684a8590.png) 

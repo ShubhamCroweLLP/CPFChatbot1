@@ -1,0 +1,19 @@
+#Introduction
+[​​​​​​​Tags](https://playwright.dev/docs/test-annotations#tag-tests) help us to filter the automation tests for execution and reporting filtration.
+
+
+
+- Below is the screenshot reference for using tags in the test description
+
+  ![image.png](/.attachments/image-e55cbd77-d037-471c-af98-ddf3515d725f.png)
+
+- Below is the screenshot reference to view same tags embedded in the HTML test report and test summary
+
+  ![image.png](/.attachments/image-195f15a5-3b54-41ad-9690-b074934cc88b.png)
+
+
+
+  ![image.png](/.attachments/image-b214031f-f917-4232-b4ad-bf2f29e6c99d.png)
+
+**Note: Tags can be used at the 'test.describe' level too.**
+

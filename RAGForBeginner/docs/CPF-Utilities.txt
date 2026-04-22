@@ -1,0 +1,59 @@
+#Introduction
+
+[NPM (Node Package Manager)](https://pauloe-me.medium.com/typescript-npm-package-publishing-a-beginners-guide-40b95908e69c) is the default package manager for the JS/TS programming language. It allows developers to easily install, manage, and share reusable JS/TS code packages, also known as modules or packages.
+
+
+**Use of NPM Package in CPF**
+
+- We will store important and common utilities( Eg. Send Message to service bus utility) that can be used across multiple test automation projects.
+- There will be incremental release of the NPM package for usage.
+- User needs to install the latest version of the npm package to get the latest version of the utilities.
+
+
+----------------------------------------------------------------------
+**Prerequisite** 
+
+Update the PAT token in the **.npmrc** file.
+Below are the steps to update the PAT Token:
+-  Navigate to [User Settings -> Security -> Personal Access Tokens](https://crowevs.visualstudio.com/_usersSettings/tokens) and Generate the Token. For more information please refer to [how to create PAT?](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows#create-a-pat)
+
+-  Base64 encode the personal access token
+       
+   - From a command/shell prompt run:
+     **`node -e "require('readline') .createInterface({input:process.stdin,output:process.stdout,historySize:0}) .question('PAT> ',p => { b64=Buffer.from(p.trim()).toString('base64');console.log(b64);process.exit(); })"`**
+
+   - Paste your personal access token value and press Enter/Return
+   - Copy the Base64 encoded value  
+
+
+
+      ![image.png](/.attachments/image-17accd9d-bbde-4fb0-96a8-6fd53940f037.png)
+
+-  Replace both [BASE64_ENCODED_PERSONAL_ACCESS_TOKEN] values in your user .npmrc file with your personal access token
+
+Refer the below video to generate the **PAT**.
+
+::: video
+<iframe src="https://crowe.sharepoint.com/sites/msteams_8c5c05/_layouts/15/embed.aspx?UniqueId=22ac1dbb-af08-4579-8c69-f454374297ea&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="GeneratePAT.mp4"></iframe>
+:::
+
+
+ **Note: The above Steps are required only if PAT is expired. Reach out to CPF Core Team Members to get access to the CPF artifacts after generating the PAT token** 
+
+
+----------------------------------------------------------------------
+
+**Install CPF Utilities Package**
+  - Navigate to the project directory and open cmd or gitbash.
+  - Run the command `npm install` with the desired version of the package (example: `npm install playwrightutilities@1.0.0`). For version details, please refer to [Release Notes](/Release-Notes)
+  - Verify the package is added to node modules and dependency is added to package.json.
+
+       ![image.png](/.attachments/image-a07b1cee-a2c9-46f6-bccd-70d6713f2901.png)
+
+ **Note: The above Steps are required only if the new version of CPF Utilities needs to be installed.** 
+
+ Refer the below **video** on How to install the **latest version** of **CPF Utilities package**
+
+::: video
+<iframe src="https://crowe.sharepoint.com/sites/msteams_8c5c05/_layouts/15/embed.aspx?UniqueId=ae7e02ff-cf3a-458c-a037-a511b4f5b247&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="Install CPF Utilities Package.mp4"></iframe>
+:::

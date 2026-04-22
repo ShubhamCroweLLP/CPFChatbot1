@@ -1,0 +1,13 @@
+# Introduction
+ES Lint, Prettier, and Husky are tools already set up within CPF to facilitate our work.
+- [ ] **ESLint** - ESLint statically analyzes your code to quickly find problems. 
+- [ ] **Prettier** - An opinionated code formatter.
+- [ ] **Husky** - Modern native git hooks made easy
+
+Please refer to the [article](https://playwrightsolutions.com/the-definitive-guide-to-api-test-automation-with-playwright-part-8-adding-eslint-prettier-and-husky/) for details. 
+
+
+# Update ES Lint Rules
+The default configuration is done for rules However, you can update the rules in the '.eslintrc.cjs' file based on your requirements.
+
+![image.png](/.attachments/image-5930c221-372f-4efd-85fe-547d4dfb147e.png)

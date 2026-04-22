@@ -95,7 +95,7 @@ def main():
     if os.path.exists(persistent_directory):
         import shutil
         print("🗑️ Removing existing vector store to rebuild...")
-        shutil.rmtree(persistent_directory)
+        shutil.rmtree(persistent_directory, ignore_errors=True)
     
     print("Initializing vector store...\n")
     

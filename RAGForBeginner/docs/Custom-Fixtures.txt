@@ -1,0 +1,12 @@
+#Introduction
+Playwright Test is based on the concept of [Test fixtures](https://playwright.dev/docs/Test-fixtures). Test fixtures are used to establish the environment for each test, giving the test everything it needs and nothing else. User can use the inbuilt fixtures provided by playwright or also create custom fixtures as per the need.
+
+Below is the implementation of custom fixtures.
+
+- Custom fixtures are created under **fixtures → fixture.ts**
+
+  ![customFixture.png](/.attachments/image-1f17deee-7fcc-4ada-8c26-0339d92ca383.png)
+
+- **Use of fixture:** Just mention the fixture in your test function argument, and the Test runner will take care of it.
+
+  ![UseOfFixture.png](/.attachments/image-895871f0-6e04-49bc-93fc-502a8ec07fe3.png)

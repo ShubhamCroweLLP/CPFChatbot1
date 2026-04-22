@@ -1,0 +1,17 @@
+#Introduction
+Playwright tests can be executed in a CI environment like Azure DevOps for continuous testing and getting test result feedback frequently.
+
+ 
+1. [Create a Pipeline](/CPF-Overview/Continuous-Integration/Pipeline-Setup-&-Execution/Steps-To-Create-Pipeline).
+
+1. [Update Parameter values](/CPF-Overview/Continuous-Integration/Pipeline-Setup-&-Execution/Update-Parameter-Values) as per project need.
+
+3. [Upload the secure files](/CPF-Overview/Continuous-Integration/Pipeline-Setup-&-Execution/Upload-Secure-File) in the library section.
+
+4. Add the [variable groups of the library section](/CPF-Overview/Continuous-Integration/Pipeline-Setup-&-Execution/Create-Variable-Group).
+
+5. [Execution & Reporting](/CPF-Overview/Continuous-Integration/Pipeline-Setup-&-Execution/Execution-&-Reporting)
+
+::: video
+<iframe src="https://crowe.sharepoint.com/sites/msteams_8c5c05/_layouts/15/embed.aspx?UniqueId=de05edc0-7f01-4c39-a3e0-dd65f4cd0b60&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="SetUpAdoPipeline.mp4"></iframe>
+:::

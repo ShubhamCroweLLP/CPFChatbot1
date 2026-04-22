@@ -1,0 +1,52 @@
+#Introduction
+Playwright is a testing framework that you can use to test your web apps remotely on Sauce Labs Cloud using the saucectl CLI.
+
+### Playwright - Sauce Labs Integration
+
+CPF can be used to test your web apps remotely on Sauce Labs Cloud using the [saucectl](https://docs.saucelabs.com/web-apps/automated-testing/playwright/quickstart/) CLI.
+
+##Pre-requisites
+- User should have a sauce labs account
+- Get your Username and Access key from [User Settings](https://app.saucelabs.com/user-settings)
+
+##Installation
+To install saucectl follow the [quickstart](https://docs.saucelabs.com/web-apps/automated-testing/playwright/quickstart/) saucelabs guide.
+
+## Configure Playwright Test
+Saucectl relies on a YAML specification file to determine exactly which tests to run and how to run them. To customize saucectl to run your Playwright tests, simply modify the properties of the [YAML](https://docs.saucelabs.com/web-apps/automated-testing/playwright/yaml/) file accordingly. Modify your configuration as per the requirement.
+
+##Important configuration in saucelabs
+- Define the region of execution test.
+- Declare the concurrency for parallelization.
+- Define the tunnel for establishing secured connection for running tests.
+- Add xml reporting because default HTML reporting of playwright is not supported.
+- Define the suite with the project name defined in playwright.config.ts and other default parameters.
+
+Below is the screenshot of sauce config.yml for reference:
+
+![image.png](/.attachments/image-fdda0009-edef-4d5c-be9a-caaf565d305e.png)
+
+##Execution of Tests - Locally
+Run the playwright test in saucelabs using “**saucectl run**” command in CLI. We can also pass optional [parameters](https://docs.saucelabs.com/dev/cli/saucectl/run) in the run command if required.
+
+## Execution of Test using Azure Pipelines
+
+1. [Create a Pipeline](/CPF-Overview/Continuous-Integration/Pipeline-Setup-&-Execution/Steps-To-Create-Pipeline).
+
+1. [Update Parameter values](/CPF-Overview/Continuous-Integration/Pipeline-Setup-&-Execution/Update-Parameter-Values) as per project need.
+
+3. [Upload the secure files](/CPF-Overview/Continuous-Integration/Pipeline-Setup-&-Execution/Upload-Secure-File) in the library section.
+
+4. Add the [variable groups of the library section](/CPF-Overview/Continuous-Integration/Pipeline-Setup-&-Execution/Create-Variable-Group).
+
+
+
+5. [Execution & Reporting](/CPF-Overview/Continuous-Integration/Pipeline-Setup-&-Execution/Execution-&-Reporting)
+
+**Note: There is a limitation on Filtering of testcases based on tags through ADO pipeline. You need to specify the tags in the grep property defined in the sauce.config yaml file for executing the tests based on tags.**
+
+-------------------------------------
+
+::: video
+<iframe src="https://crowe.sharepoint.com/sites/msteams_8c5c05/_layouts/15/embed.aspx?UniqueId=9ba3e8a3-3307-4dfd-83ff-14459b07b3f1&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="SetupSauceLabsPipleine.mp4"></iframe>
+:::

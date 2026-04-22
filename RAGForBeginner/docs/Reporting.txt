@@ -1,0 +1,14 @@
+#Introduction
+Human readable test reports are critical to the quality assurance (QA) testing process as they allow for clear communication of the results of a test.
+Without clear and detailed information about what has failed and why, it can be difficult for those involved in the testing process to effectively understand and address any issues that may have arisen. 
+
+‍‍
+Unfortunately, out of the box, playwright reports may not always be as human readable as desired. While they do provide some information about the results of a test, they may not include all of the necessary context and detail to fully understand the issue. 
+
+However, with a little extra effort, it is possible to significantly improve the human readability of playwright reports and make the testing process more efficient and effective. 
+
+
+In CPF below things are recommended to make [reports human-readable](https://www.workwithloop.com/blog/a-guide-to-human-readable-reports-in-playwright-with-test-step-expect-annotations):
+
+[[_TOSP_]]
+
