@@ -91,20 +91,13 @@ def main():
     docs_path = "docs"
     persistent_directory = "db/chroma_db"
     
-    # Check if vector store already exists
+    # Always remove old vector store and rebuild
     if os.path.exists(persistent_directory):
-        print("✅ Vector store already exists. No need to re-process documents.")
-        
-        embedding_model = OpenAIEmbeddings(model="text-embedding-3-small")
-        vectorstore = Chroma(
-            persist_directory=persistent_directory,
-            embedding_function=embedding_model, 
-            collection_metadata={"hnsw:space": "cosine"}
-        )
-        print(f"Loaded existing vector store with {vectorstore._collection.count()} documents")
-        return vectorstore
+        import shutil
+        print("🗑️ Removing existing vector store to rebuild...")
+        shutil.rmtree(persistent_directory)
     
-    print("Persistent directory does not exist. Initializing vector store...\n")
+    print("Initializing vector store...\n")
     
     # Step 1: Load documents
     documents = load_documents(docs_path)  
@@ -112,7 +105,7 @@ def main():
     # Step 2: Split into chunks
     chunks = split_documents(documents)
     
-    # # Step 3: Create vector store
+    # Step 3: Create vector store
     vectorstore = create_vector_store(chunks, persistent_directory)
     
     print("\n✅ Ingestion complete! Your documents are now ready for RAG queries.")
