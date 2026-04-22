@@ -40,22 +40,6 @@ st.title("🤖 CPF Chatbot")
 with st.sidebar:
     st.header("Settings")
 
-    # --- Upload text files ---
-    uploaded_files = st.file_uploader(
-        "📄 Upload .txt files", type=["txt"], accept_multiple_files=True
-    )
-    if uploaded_files and st.button("📤 Upload & Ingest"):
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        docs_path = os.path.join(script_dir, "docs")
-        os.makedirs(docs_path, exist_ok=True)
-        for f in uploaded_files:
-            file_path = os.path.join(docs_path, f.name)
-            with open(file_path, "wb") as out:
-                out.write(f.getbuffer())
-        st.cache_resource.clear()
-        st.success(f"Uploaded {len(uploaded_files)} file(s) and rebuilt knowledge base!")
-        st.rerun()
-
     if st.button("🔄 Re-ingest Documents"):
         st.cache_resource.clear()
         st.rerun()
@@ -65,7 +49,6 @@ with st.sidebar:
         st.session_state.chat_history = []
         st.rerun()
 
-# Build vectorstore AFTER uploads are saved
 db = build_vectorstore()
 
 # Chat state
@@ -119,12 +102,10 @@ Please provide a clear, helpful answer using only the information from these doc
 
             result = model.invoke(messages)
             answer = result.content
-            sources = list({doc.metadata.get("source", "unknown") for doc in docs})
-            full = f"{answer}\n\n📄 **Sources:** {', '.join(sources)}"
 
-            st.markdown(full)
+            st.markdown(answer)
 
             # Update history
-            st.session_state.messages.append({"role": "assistant", "content": full})
+            st.session_state.messages.append({"role": "assistant", "content": answer})
             st.session_state.chat_history.append(HumanMessage(content=prompt))
             st.session_state.chat_history.append(AIMessage(content=answer))
