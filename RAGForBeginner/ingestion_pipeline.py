@@ -1,7 +1,7 @@
 import os
 from langchain_community.document_loaders import TextLoader, DirectoryLoader
 from langchain_text_splitters import CharacterTextSplitter
-from langchain_openai import OpenAIEmbeddings
+from langchain_openai import AzureOpenAIEmbeddings
 from langchain_chroma import Chroma
 from dotenv import load_dotenv
 
@@ -68,7 +68,7 @@ def create_vector_store(chunks, persist_directory="db/chroma_db"):
     """Create and persist ChromaDB vector store"""
     print("Creating embeddings and storing in ChromaDB...")
         
-    embedding_model = OpenAIEmbeddings(model="text-embedding-3-small")
+    embedding_model = AzureOpenAIEmbeddings(azure_deployment=os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT"))
     
     # Create ChromaDB vector store
     print("--- Creating vector store ---")
@@ -87,9 +87,10 @@ def main():
     """Main ingestion pipeline"""
     print("=== RAG Document Ingestion Pipeline ===\n")
     
-    # Define paths
-    docs_path = "docs"
-    persistent_directory = "db/chroma_db"
+    # Define paths relative to this script's directory
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    docs_path = os.path.join(base_dir, "docs")
+    persistent_directory = os.path.join(base_dir, "db", "chroma_db")
     
     # Always remove old vector store and rebuild
     if os.path.exists(persistent_directory):

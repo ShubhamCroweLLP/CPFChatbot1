@@ -1,18 +1,20 @@
+import os
 from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
 
 # Load environment variables
 load_dotenv()
 
 # Connect to your document database
-persistent_directory = "db/chroma_db"
-embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+base_dir = os.path.dirname(os.path.abspath(__file__))
+persistent_directory = os.path.join(base_dir, "db", "chroma_db")
+embeddings = AzureOpenAIEmbeddings(azure_deployment=os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT"))
 db = Chroma(persist_directory=persistent_directory, embedding_function=embeddings)
 
 # Set up AI model
-model = ChatOpenAI(model="gpt-4o")
+model = AzureChatOpenAI(azure_deployment=os.getenv("AZURE_OPENAI_CHAT_DEPLOYMENT"))
 
 # Store our conversation as messages
 chat_history = []
