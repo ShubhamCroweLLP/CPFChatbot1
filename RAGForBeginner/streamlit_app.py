@@ -5,11 +5,21 @@ from langchain_community.document_loaders import TextLoader, DirectoryLoader
 from langchain_text_splitters import CharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
 
 # --- Init ---
-embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
-model = ChatOpenAI(model="gpt-4o")
+embeddings = AzureOpenAIEmbeddings(
+    azure_deployment=os.environ.get("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", "text-embedding-3-small"),
+    azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT", ""),
+    api_key=os.environ.get("AZURE_OPENAI_API_KEY", ""),
+    api_version=os.environ.get("AZURE_OPENAI_API_VERSION", "2024-02-01"),
+)
+model = AzureChatOpenAI(
+    azure_deployment=os.environ.get("AZURE_OPENAI_CHAT_DEPLOYMENT", "gpt-4o"),
+    azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT", ""),
+    api_key=os.environ.get("AZURE_OPENAI_API_KEY", ""),
+    api_version=os.environ.get("AZURE_OPENAI_API_VERSION", "2024-02-01"),
+)
 
 
 @st.cache_resource
