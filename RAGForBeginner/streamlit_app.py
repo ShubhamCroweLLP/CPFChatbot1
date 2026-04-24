@@ -1,11 +1,17 @@
 import os
 import uuid
+import base64
+import glob
 import streamlit as st
-from langchain_community.document_loaders import TextLoader, DirectoryLoader
+from langchain_community.document_loaders import TextLoader, DirectoryLoader, PyPDFLoader
 from langchain_text_splitters import CharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
+from langchain_core.documents import Document
 from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
+
+IMAGE_EXTENSIONS = ("*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp", "*.webp")
+VIDEO_EXTENSIONS = ("*.mp4", "*.avi", "*.mov", "*.mkv", "*.webm")
 
 # --- Init ---
 embeddings = AzureOpenAIEmbeddings(
@@ -30,13 +36,81 @@ def build_vectorstore():
     if not os.path.exists(docs_path):
         st.error(f"No '{docs_path}' directory found.")
         st.stop()
-    loader = DirectoryLoader(
+    txt_loader = DirectoryLoader(
         path=docs_path, glob="**/*.txt",
         loader_cls=TextLoader, loader_kwargs={"encoding": "utf-8"},
     )
-    documents = loader.load()
+    pdf_loader = DirectoryLoader(
+        path=docs_path, glob="**/*.pdf",
+        loader_cls=PyPDFLoader,
+    )
+    documents = txt_loader.load() + pdf_loader.load()
+
+    # Load images — describe with GPT-4o vision
+    image_files = []
+    for ext in IMAGE_EXTENSIONS:
+        image_files.extend(glob.glob(os.path.join(docs_path, "**", ext), recursive=True))
+    if image_files:
+        for img_path in image_files:
+            try:
+                with open(img_path, "rb") as f:
+                    img_data = base64.b64encode(f.read()).decode("utf-8")
+                ext_name = os.path.splitext(img_path)[1].lower()
+                mime = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg",
+                        "gif": "image/gif", "bmp": "image/bmp", "webp": "image/webp"}.get(ext_name.lstrip("."), "image/png")
+                msg = HumanMessage(content=[
+                    {"type": "text", "text": "Describe this image in detail including all visible text, labels, and information."},
+                    {"type": "image_url", "image_url": {"url": f"data:{mime};base64,{img_data}"}},
+                ])
+                desc = model.invoke([msg]).content
+                documents.append(Document(
+                    page_content=f"[Image: {os.path.basename(img_path)}]\n{desc}",
+                    metadata={"source": img_path, "type": "image"}
+                ))
+            except Exception:
+                pass
+
+    # Load videos — extract key frames and describe
+    video_files = []
+    for ext in VIDEO_EXTENSIONS:
+        video_files.extend(glob.glob(os.path.join(docs_path, "**", ext), recursive=True))
+    if video_files:
+        try:
+            import cv2
+            for video_path in video_files:
+                try:
+                    cap = cv2.VideoCapture(video_path)
+                    fps = cap.get(cv2.CAP_PROP_FPS) or 30
+                    total = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+                    dur = total / fps if fps > 0 else 0
+                    interval = max(30, dur / 10) if dur > 0 else 30
+                    descs = []
+                    t = 0
+                    while t < dur and len(descs) < 10:
+                        cap.set(cv2.CAP_PROP_POS_MSEC, t * 1000)
+                        ret, frame = cap.read()
+                        if ret:
+                            _, buf = cv2.imencode(".jpg", frame)
+                            b64 = base64.b64encode(buf).decode("utf-8")
+                            msg = HumanMessage(content=[
+                                {"type": "text", "text": f"Frame from video at {t:.0f}s. Describe what you see in detail."},
+                                {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{b64}"}},
+                            ])
+                            descs.append(f"[{t:.0f}s]: {model.invoke([msg]).content}")
+                        t += interval
+                    cap.release()
+                    if descs:
+                        documents.append(Document(
+                            page_content=f"[Video: {os.path.basename(video_path)}]\n" + "\n".join(descs),
+                            metadata={"source": video_path, "type": "video"}
+                        ))
+                except Exception:
+                    pass
+        except ImportError:
+            pass
+
     if not documents:
-        st.error("No .txt files found in docs/")
+        st.error("No documents found in docs/")
         st.stop()
     splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
     chunks = splitter.split_documents(documents)
